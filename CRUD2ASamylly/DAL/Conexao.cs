@@ -10,7 +10,7 @@ namespace CRUD2AEmylly.DAL
     public class Conexao
     {
         //propriedades para conectar ao banco de dados
-        string conecta = "SERVER=localhost; DATABASE=pessoas; UID=root; PWD=123456";
+        string conecta = "SERVER=localhost; DATABASE= clientes; UID=root; PWD=123456";
 
         protected MySqlConnection conexao= null;
 

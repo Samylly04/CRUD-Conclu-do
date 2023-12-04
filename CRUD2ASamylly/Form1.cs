@@ -15,6 +15,22 @@ namespace CRUD2AEmylly
 {
     public partial class Form1 : Form
     {
+        private void Excluir(Pessoa cliente)
+        {
+            PessoaBLL pessoaBLL = new PessoaBLL();
+            if (txtCodigo.Text == string.Empty)
+            {
+                MessageBox.Show("Selecione um cadastro para ser excluido!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else if (MessageBox.Show("Deseja excluir cadastro selecionado?", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            {
+                cliente.Id = Convert.ToInt32(txtCodigo.Text);
+                pessoaBLL.Excluir(cliente);
+                MessageBox.Show("Excluido com sucesso!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Limpar();
+            }
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -37,11 +53,12 @@ namespace CRUD2AEmylly
             cbEstilo.SelectedIndex = -1;
             txtValorTot.Clear();
             txtNome.BackColor = Color.White;
+
           
         }
 
         //metodo editar
-        public void Alterar(Pessoa pessoa)
+        public void Alterar(Pessoa cliente)
         {
             PessoaBLL pessoaBLL = new PessoaBLL();
             try
@@ -73,26 +90,26 @@ namespace CRUD2AEmylly
                 }
                 else
                 {
-                    pessoa.Id = Convert.ToInt32(txtCodigo.Text);
+                    cliente.Id = Convert.ToInt32(txtCodigo.Text);
 
-                    pessoa.Nome = txtNome.Text;
-                    pessoa.Cidade = txtCidade.Text;
+                    cliente.Nome = txtNome.Text;
+                    cliente.Cidade = txtCidade.Text;
                     mtbCelular.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;  //remove a máscara do campo cpf
-                    pessoa.Celular = mtbCelular.Text;
-                    pessoa.Dataa = dtData.Text;
-                    pessoa.Horario = dtHorario.Text;
-                    pessoa.QuantAnel = txtQuantAnel.Text;
-                    pessoa.CorAnel = txtCorAnel.Text;
-                    pessoa.QuantArg = txtQuantArg.Text;
-                    pessoa.CorArg = txtCorArg.Text;
-                    pessoa.QuantLinha = txtQuantLinha.Text;
-                    pessoa.CorLinha = txtCorLinha.Text;
-                    pessoa.QuantPin = txtQuantPin.Text;
-                    pessoa.QuantTran = txtQuantTran.Text;
-                    pessoa.Estilo = cbEstilo.Text;
-                    pessoa.ValorTot = txtValorTot.Text;
+                    cliente.Celular = mtbCelular.Text;
+                    cliente.Dataa = dtData.Text;
+                    cliente.Horario = dtHorario.Text;
+                    cliente.QuantAnel = txtQuantAnel.Text;
+                    cliente.CorAnel = txtCorAnel.Text;
+                    cliente.QuantArg = txtQuantArg.Text;
+                    cliente.CorArg = txtCorArg.Text;
+                    cliente.QuantLinha = txtQuantLinha.Text;
+                    cliente.CorLinha = txtCorLinha.Text;
+                    cliente.QuantPin = txtQuantPin.Text;
+                    cliente.QuantTran = txtQuantTran.Text;
+                    cliente.Estilo = cbEstilo.Text;
+                    cliente.ValorTot = txtValorTot.Text;
 
-                    pessoaBLL.Alterar(pessoa);
+                    pessoaBLL.Alterar(cliente);
                     MessageBox.Show("Cadastro atualizado com sucesso!", "Aviso",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -108,7 +125,7 @@ namespace CRUD2AEmylly
 
 
         //metodo para salvar
-        private void Salvar(Pessoa pessoa)
+        private void Salvar(Pessoa cliente)
         {
             PessoaBLL pessoaBLL = new PessoaBLL();
             try
@@ -140,26 +157,25 @@ namespace CRUD2AEmylly
                 }
                 else
                 {
-                    pessoa.Id = Convert.ToInt32(txtCodigo.Text);
-
-                    pessoa.Nome = txtNome.Text;
-                    pessoa.Cidade = txtCidade.Text;
+                    //cliente.Id = Convert.ToInt32(txtCodigo.Text);
+                    cliente.Nome = txtNome.Text;
+                    cliente.Cidade = txtCidade.Text;
                     mtbCelular.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;  //remove a máscara do campo celular
-                    pessoa.Celular = mtbCelular.Text;
-                    pessoa.Dataa = dtData.Text;
-                    pessoa.Horario = dtHorario.Text;
-                    pessoa.QuantAnel = txtQuantAnel.Text;
-                    pessoa.CorAnel = txtCorAnel.Text;
-                    pessoa.QuantArg = txtQuantArg.Text;
-                    pessoa.CorArg = txtCorArg.Text;
-                    pessoa.QuantLinha = txtQuantLinha.Text;
-                    pessoa.CorLinha = txtCorLinha.Text;
-                    pessoa.QuantPin = txtQuantPin.Text;
-                    pessoa.QuantTran = txtQuantTran.Text;
-                    pessoa.Estilo = cbEstilo.Text;
-                    pessoa.ValorTot = txtValorTot.Text;
+                    cliente.Celular = mtbCelular.Text;
+                    cliente.Dataa = dtData.Text;
+                    cliente.Horario = dtHorario.Text;
+                    cliente.QuantAnel = txtQuantAnel.Text;
+                    cliente.CorAnel = txtCorAnel.Text;
+                    cliente.QuantArg = txtQuantArg.Text;
+                    cliente.CorArg = txtCorArg.Text;
+                    cliente.QuantLinha = txtQuantLinha.Text;
+                    cliente.CorLinha = txtCorLinha.Text;
+                    cliente.QuantPin = txtQuantPin.Text;
+                    cliente.QuantTran = txtQuantTran.Text;
+                    cliente.Estilo = cbEstilo.Text;
+                    cliente.ValorTot = txtValorTot.Text;
 
-                    pessoaBLL.Alterar(pessoa);
+                    pessoaBLL.Salvar(cliente);
                     MessageBox.Show("Cadastro realizado com sucesso!", "Aviso",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -200,7 +216,7 @@ namespace CRUD2AEmylly
                 dataGridView.Columns[14].HeaderText = "Estilo";
                 dataGridView.Columns[15].HeaderText = "Valor total";
 
-                //Remover colunas do datagrid
+                /*Remover colunas do datagrid
                 dataGridView.Columns[6].Visible = false;
                 dataGridView.Columns[7].Visible = false;
                 dataGridView.Columns[8].Visible = false;
@@ -210,16 +226,26 @@ namespace CRUD2AEmylly
                 dataGridView.Columns[12].Visible = false;
                 dataGridView.Columns[13].Visible = false;
                 dataGridView.Columns[14].Visible = false;
-                dataGridView.Columns[15].Visible = false;
+                dataGridView.Columns[15].Visible = false;*/
 
                 //largura das colunas
-                dataGridView.Columns[0].Width = 20;
+                dataGridView.Columns[0].Width = 45;
                 dataGridView.Columns[1].Width = 160;
                 dataGridView.Columns[2].Width = 70;
-                dataGridView.Columns[3].Width = 40;
+                dataGridView.Columns[3].Width = 75;
                 dataGridView.Columns[4].Width = 75;
-                dataGridView.Columns[5].Width = 85;
-
+                dataGridView.Columns[5].Width = 60;
+                dataGridView.Columns[6].Width = 60;
+                dataGridView.Columns[7].Width = 60;
+                dataGridView.Columns[8].Width = 60;
+                dataGridView.Columns[9].Width = 60;
+                dataGridView.Columns[10].Width = 60;
+                dataGridView.Columns[11].Width = 60;
+                dataGridView.Columns[12].Width = 60;
+                dataGridView.Columns[13].Width = 60;
+                dataGridView.Columns[14].Width = 55;
+                dataGridView.Columns[15].Width = 60;
+            
             }
             catch (Exception erro)
             {
@@ -234,8 +260,8 @@ namespace CRUD2AEmylly
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            Pessoa pessoa = new Pessoa();
-            Salvar(pessoa);
+            Pessoa cliente = new Pessoa();
+            Salvar(cliente);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -243,7 +269,7 @@ namespace CRUD2AEmylly
             Limpar();
         }
 
-        private void dataGridView_DoubleClick(object sender, EventArgs e)
+        private void dataGridView_CellContentClick(object sender, EventArgs e)
         {
             txtCodigo.Text = dataGridView.CurrentRow.Cells[0].Value.ToString();
             txtNome.Text = dataGridView.CurrentRow.Cells[1].Value.ToString();
@@ -261,18 +287,18 @@ namespace CRUD2AEmylly
             txtQuantTran.Text = dataGridView.CurrentRow.Cells[13].Value.ToString();
             cbEstilo.Text = dataGridView.CurrentRow.Cells[14].Value.ToString();
             txtValorTot.Text = dataGridView.CurrentRow.Cells[15].Value.ToString();
-
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            Pessoa pessoa = new Pessoa();
-            Alterar(pessoa);
+            Pessoa cliente = new Pessoa();
+            Alterar(cliente);
         }
 
-        private void txtNome_TextChanged(object sender, EventArgs e)
+        private void btnExcluir_Click(object sender, EventArgs e)
         {
-
+            Pessoa cliente = new Pessoa();
+            Excluir(cliente);
         }
     }
 }

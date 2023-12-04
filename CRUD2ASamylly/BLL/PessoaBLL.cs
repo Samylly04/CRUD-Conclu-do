@@ -13,12 +13,26 @@ namespace CRUD2AEmylly.BLL
     {
         PessoaDAL pessoaDAL = new PessoaDAL();
 
-        //metodo para editar
-        public void Alterar(Pessoa pessoa)
+        //método para excluir
+        public void Excluir(Pessoa cliente)
         {
             try
             {
-                pessoaDAL.Alterar(pessoa);
+                pessoaDAL.Excluir(cliente);
+            }
+            catch (Exception erro)
+            {
+
+                throw erro;
+            }
+        }
+
+        //metodo para editar
+        public void Alterar(Pessoa cliente)
+        {
+            try
+            {
+                pessoaDAL.Alterar(cliente);
             }
             catch (Exception erro)
             {
@@ -27,11 +41,11 @@ namespace CRUD2AEmylly.BLL
         }
 
         //metodo para salvar 
-        public void Salvar(Pessoa pessoa)
+        public void Salvar(Pessoa cliente)
         {
             try
             {
-                pessoaDAL.Salvar(pessoa);
+                pessoaDAL.Salvar(cliente);
             }
             catch (Exception erro)
             {

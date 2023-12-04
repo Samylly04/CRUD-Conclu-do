@@ -196,7 +196,6 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(511, 23);
             this.txtNome.TabIndex = 1;
-            this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // txtQuantAnel
             // 
@@ -222,7 +221,7 @@
             "Feminino",
             "Masculino",
             "Infantil"});
-            this.cbEstilo.Location = new System.Drawing.Point(273, 384);
+            this.cbEstilo.Location = new System.Drawing.Point(272, 384);
             this.cbEstilo.Name = "cbEstilo";
             this.cbEstilo.Size = new System.Drawing.Size(104, 24);
             this.cbEstilo.TabIndex = 3;
@@ -253,12 +252,13 @@
             this.dataGridView.AllowUserToResizeRows = false;
             this.dataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(11, 464);
+            this.dataGridView.Location = new System.Drawing.Point(12, 466);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(627, 150);
+            this.dataGridView.Size = new System.Drawing.Size(622, 150);
             this.dataGridView.TabIndex = 16;
+            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             // 
             // btnSalvar
             // 
@@ -279,6 +279,7 @@
             this.btnAlterar.TabIndex = 14;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnExcluir
             // 
@@ -288,6 +289,7 @@
             this.btnExcluir.TabIndex = 12;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnExibir
             // 
@@ -307,6 +309,7 @@
             this.btnCancelar.TabIndex = 15;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // label12
             // 
